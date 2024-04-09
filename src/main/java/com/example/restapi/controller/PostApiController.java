@@ -1,7 +1,7 @@
 package com.example.restapi.controller;
 
 import com.example.restapi.model.BookRequest;
-import com.example.restapi.model.userInfo;
+import com.example.restapi.model.UserInfo;
 import org.springframework.web.bind.annotation.*;
 
 @RestController //restapi 방식 지원
@@ -15,9 +15,9 @@ public class PostApiController {
 
     //http://localhost:8080/api/post2
     @PostMapping("/post2")
-    public String user(@RequestBody userInfo userInfo){
+    public UserInfo user(@RequestBody UserInfo userInfo){
         System.out.println(userInfo);
-        return userInfo.toString();
+        return userInfo;
     }
 }
 /*

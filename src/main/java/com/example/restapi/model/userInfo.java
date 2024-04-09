@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class userInfo {
     private String name;
-    private int tel;
+    private Integer tel; //제이슨 활용시 래퍼런스 타입 추천
     private String email;
 
 }
@@ -17,7 +17,7 @@ public class userInfo {
 /*
 {
 "name" : "hanboreum",
-"tel" : 010111222
+"tel" : 10111222,
 "email" : "email@email"
 }
 

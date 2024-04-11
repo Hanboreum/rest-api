@@ -1,15 +1,17 @@
 package com.example.restapi.controller;
 
 import com.example.restapi.model.BookQueryParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController //RestApi를 처리하는 컨트롤러
 @RequestMapping("/api") //api로 시작하는 주소를 받겠다.
 public class RestApiController {
 
+    //"http://localhost:8080/api/hello"
     @GetMapping(path = "/hello")
     public String hello(){
-        //"http://localhost:8080/api/hello"
         var html = "<html> <body> <h1>Hello spring boot </h1> </body> </html>";
         return html;
     }
@@ -32,7 +34,7 @@ public class RestApiController {
     }
 
     // http://localhost:8080/api/book?category=IT&issuedYear=2023&issued-month=01&issued_day=31
-    //category 부터 파싱. category 는 String 이겠죠
+    //category 부터 파싱.
     @GetMapping(path = "/book")
     public void queryParam( @RequestParam String category, // RequestParam: 쿼리 매개변수에서 값을 추출할 때 사용.
                             @RequestParam String issuedYear,
@@ -50,6 +52,20 @@ public class RestApiController {
         System.out.println(bookQueryParam);
     }
 
+
+    // @DeleteMapping("/delete")
+    //http://localhost:8080/api/user/{abcd}/delete
+    //http://localhost:8080/api/user/{myname}/del
+    @DeleteMapping(path = {"/user/{userName}/delete", "user/{userName}/del"}) //path 사용시 {} 사용해 여러 경로 접속 가능
+    public void delete (@PathVariable String userName){
+        log.info("Username : {}", userName);
+    }
+
+    //http://localhost:8080/api/user/{101234}/delete-tel
+    @DeleteMapping (path = {"/user/{userTel}/delete-tel", "/user/{user-tel}/del-tel"})
+    public void del( @PathVariable String userTel){
+        log.info("use tel : {}", userTel);
+    }
 }
 
 /*

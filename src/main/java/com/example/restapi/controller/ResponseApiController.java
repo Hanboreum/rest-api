@@ -23,7 +23,8 @@ public class ResponseApiController {
         log.info("user: {}", user);
 
         var response = ResponseEntity //status 코드, body 를 넣어줄 수 있다.
-                .status(HttpStatus.CREATED) //http status지정한다.
+                .status(HttpStatus.ACCEPTED) //http status지정한다.
+                .header("x-custom" , "high")
                 .body(user); // user 지정
         return response;
     }
